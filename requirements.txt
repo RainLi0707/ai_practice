@@ -1,0 +1,26 @@
+# Qwen3-VL 8B Training Dependencies
+
+# LangChain
+langchain
+langchain-community
+
+# Transformers and Model
+transformers
+# PyTorch: Use version 2.8.0 to avoid Windows DLL errors
+# For GPU support, get CUDA version from https://pytorch.org/
+torch
+torchvision
+torchaudio
+accelerate
+# bitsandbytes may not support Windows, optional
+# bitsandbytes>=0.41.0
+
+# PEFT for Parameter-Efficient Fine-Tuning
+peft
+
+# Data Processing
+datasets
+pillow
+
+# Utilities
+numpy
