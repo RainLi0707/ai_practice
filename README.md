@@ -1,20 +1,40 @@
 # AI Agent 實作練習
 
-### Repo 結構
-```text
-my-ai-agent-portfolio/
-├── README.md                  
-├── enterprise_data_agent/      # (主專案) 
-│   ├── main.py
-│   ├── ...
-├── learning_modules/           # (練習過程) 
-│   ├── practice_memory.py
-│   ├── practice_tool_calling.py
-│   ├── mcp_basic/              
-└── docs/                       
-    ├── architecture.md
-    ├── devops_practices.md
-```
+### 📂 Repository Structure & Practice Items (專案結構與練習重點)
+This repository is organized to demonstrate Enterprise AI patterns. Below is the detailed breakdown of each file and the concept it practices.
+#### `src/enterprise_data_agent/` (Core Framework)
+**🧠 Core Layer (核心基礎)**
+*   **`core/base_agent.py`**
+    *   *Practice*: **Abstract Base Class in AI**.
+    *   *Concept*: Defines the standard `think` -> `act` loop used by all agents.
+*   **`core/memory.py`**
+    *   *Practice*: **Context Management & Persistence**.
+    *   *Concept*: Implements a shared state store (like Redis) so agents can share data context without re-prompting.
+*   **`core/llm.py`**
+    *   *Practice*: **High-Performance Inference**.
+    *   *Concept*: Qwen-VL-Instruct integration with **4-bit quantization (BitsAndBytes)** for efficient local execution.
+**🤖 Agents Layer (多智能體協作)**
+*   **`agents/orchestrator.py`**
+    *   *Practice*: **A2A (Agent-to-Agent) & Router Pattern**.
+    *   *Concept*: The "Manager" that parses natural language and delegates tasks via JSON protocols.
+*   **`agents/sql_analyst.py`**
+    *   *Practice*: **MCP Tool Use & Text-to-SQL**.
+    *   *Concept*: An agent specialized in converting questions to SQL and executing them via MCP.
+*   **`agents/data_scientist.py`**
+    *   *Practice*: **Code Interpreter & Tool Calling**.
+    *   *Concept*: An agent that writes and executes Python code for data analysis.
+**🔌 Services Layer (外部整合)**
+*   **`services/mcp_client.py`**
+    *   *Practice*: **Model Context Protocol (MCP) Client**.
+    *   *Concept*: Implements the standard protocol to connect with external tools (Servers).
+*   **`services/python_sandbox.py`**
+    *   *Practice*: **Sandboxed Execution**.
+    *   *Concept*: Simulates a secure environment for AI-generated code execution.
+#### `src/tools/` (External Tools)
+*   **`tools/my_mcp_server.py`**
+    *   *Practice*: **MCP Server Implementation**.
+    *   *Concept*: A standard MCP server exposing SQL capabilities to the agents.
+
 
 
 ### Enterprise Multi-Agent Data Framework
